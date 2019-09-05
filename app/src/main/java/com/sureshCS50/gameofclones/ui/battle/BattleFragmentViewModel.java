@@ -31,19 +31,19 @@ public class BattleFragmentViewModel extends ViewModel {
         troopData.troopType = Constants.bd;
 
         Troop b1 = mDatabaseManager.getTroopByKind(Constants.bd_b1);
-        b1.count = new Random().nextInt(201);
+        b1.count = getRandom();
         b1.strength = getValue(b1.count, b1.strength);
         b1.agility = getValue(b1.count, b1.agility);
         b1.intelligence = getValue(b1.count, b1.intelligence);
 
         Troop b2 = mDatabaseManager.getTroopByKind(Constants.bd_b2);
-        b2.count = new Random().nextInt(201);
+        b2.count = getRandom();
         b2.strength = getValue(b2.count, b2.strength);
         b2.agility = getValue(b2.count, b2.agility);
         b2.intelligence = getValue(b2.count, b2.intelligence);
 
         Troop aat = mDatabaseManager.getTroopByKind(Constants.bd_aat);
-        aat.count = new Random().nextInt(201);
+        aat.count = getRandom();
         aat.strength = getValue(aat.count, aat.strength);
         aat.agility = getValue(aat.count, aat.agility);
         aat.intelligence = getValue(aat.count, aat.intelligence);
@@ -57,6 +57,13 @@ public class BattleFragmentViewModel extends ViewModel {
         troopData.totalIntelligence = ((b1.intelligence + b2.intelligence + aat.intelligence)*100)/6000;
 
         bdTroopData.setValue(troopData);
+    }
+
+    private int getRandom() {
+        Random r = new Random();
+        int low = 1;
+        int high = 200;
+        return r.nextInt(high-low) + low;
     }
 
 
