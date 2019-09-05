@@ -87,7 +87,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.4"
-                        android:src="@drawable/battle_droid_b1" />
+                        app:load_image="@{troop.kind}"
+                        android:layout_margin="8dp"/>
 
                     <ScrollView
                         android:layout_width="0dp"
