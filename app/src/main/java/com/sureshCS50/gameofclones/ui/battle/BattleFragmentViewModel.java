@@ -18,7 +18,6 @@ public class BattleFragmentViewModel extends ViewModel {
 
     private static final String TAG = "BattleFragmentViewModel";
 
-    private MainViewModel mSharedViewModel;
     private DatabaseManager mDatabaseManager;
     MutableLiveData<TroopData> bdTroopData;
     MutableLiveData<TroopData> ctTroopData;
@@ -27,7 +26,6 @@ public class BattleFragmentViewModel extends ViewModel {
     BattleFragmentViewModel(MainViewModel sharedViewModel) {
         this.bdTroopData = new MutableLiveData<>();
         this.ctTroopData = new MutableLiveData<>();
-        this.mSharedViewModel = sharedViewModel;
         this.mDatabaseManager = DatabaseManager.getInstance();
         this.showCreateCTArmyPopup = new MutableLiveData<>();
     }
@@ -58,6 +56,7 @@ public class BattleFragmentViewModel extends ViewModel {
         troopData.troops.add(b1);
         troopData.troops.add(b2);
         troopData.troops.add(aat);
+        troopData.totalTroops = b1.count + b2.count + aat.count;
 
         troopData.totalStrength = ((b1.strength + b2.strength + aat.strength)*100)/6000;
         troopData.totalAgility = ((b1.agility + b2.agility + aat.agility)*100)/6000;
