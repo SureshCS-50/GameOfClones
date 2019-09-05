@@ -1,0 +1,9 @@
+Kind,Description,Strength,Agility,Intelligence,Terrain,Type
+Advanced Recon Commandos,"Also known as ARC troopers, were elite clone troopers that excel and received further training.",6,3,5,"Air, Under water, Inter Galactic Space, Ground, Buildings",Clone Trooper
+Clone SCUBA troopers,Clone troopers equipped with underwater armor and weaponry.,4,3,7,"Under Water, Ground",Clone Trooper
+Clone sharpshooters,Clone troopers trained to be snipers.,2,7,8,"Ground, Buildings",Clone Trooper
+Clone jetpack troopers,Clone troopers equipped with a jetpack and missile launcher,8,8,4,"Ground, Inter Galactic Space",Clone Trooper
+Clone ordnance specialists,Clone troopers that have received specialized training in arming and diffusing bombs.,9,7,4,"Ground, Buildings",Clone Trooper
+B1 Battle droids,"B1 battle droids, also referred to as standard battle droids, were the most widely used battle droids manufactured by Baktoid Combat Automata and Baktoid Armor Workshop",3,5,7,"Air, Under water, Inter Galactic Space, Ground, Buildings",Droid Army
+B2 Super battle droids,"B2 super battle droids, also known as super battle droids or super droids, were an advanced battle droid used by the Confederacy of Independent Systems during the Clone Wars. Super battle droids were much stronger than their predecessors, and like the updated B1s used by the Confederacy, they did not require a command system to operate, which gave the droids limited independence.",6,4,8,"Air, Under water, Inter Galactic Space, Ground, Buildings",Droid Army
+Armored Assault Tanks,"The Armored Assault Tank, also known as the AAT battle tank or the AAT-1 Hover Tank, was an artillery vehicle used by the Trade Federation",8,3,2,"Air, Under water, Inter Galactic Space, Ground, Buildings",Droid Army

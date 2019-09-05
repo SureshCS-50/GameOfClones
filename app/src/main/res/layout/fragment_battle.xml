@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            type="com.sureshCS50.gameofclones.data.db.entity.Troop"
+            name="troop" />
+
+        <variable
+            type="com.sureshCS50.gameofclones.models.TroopData"
+            name="bdTroopData"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/new_battle"
+        tools:context=".ui.battle.BattleFragment">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_transparent"/>
+
+        <Button
+            android:id="@+id/btnCreateBattle"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorAccent"
+            android:layout_margin="4dp"
+            android:text="Start Battle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btnCreateBattle"
+            android:padding="16dp"
+            android:weightSum="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@drawable/droid_soliders">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/dark_transparent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:id="@+id/labelBattleDroids"
+                    android:text="Battle Droids"
+                    android:textColor="@android:color/white"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:gravity="center"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_margin="4dp"
+                        android:background="@android:color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:text="Strength"
+                                android:textColor="@android:color/white"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/progressStrength"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:max="100"
+                                android:progress="@{bdTroopData.totalStrength}"
+                                android:progressDrawable="@drawable/circular_progress" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:text="Agility"
+                                android:textColor="@android:color/white"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/progressAgility"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:max="100"
+                                android:progress="@{bdTroopData.totalAgility}"
+                                android:progressDrawable="@drawable/circular_progress" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:text="Intelligence"
+                                android:textColor="@android:color/white"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/progressIntelligence"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:max="100"
+                                android:progress="@{bdTroopData.totalIntelligence}"
+                                android:progressDrawable="@drawable/circular_progress" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_margin="4dp"
+                        android:background="@android:color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/battle_droid_b1" />
+
+                            <TextView
+                                android:id="@+id/b1Count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:layout_margin="2dp"
+                                android:text="@{bdTroopData.troops.get(0).count}"
+                                android:textColor="@android:color/white"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/battle_droid_b2" />
+
+                            <TextView
+                                android:id="@+id/b2Count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:layout_margin="2dp"
+                                android:text="@{bdTroopData.troops.get(1).count}"
+                                android:textColor="@android:color/white"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/battle_droid_aat" />
+
+                            <TextView
+                                android:id="@+id/aatCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:layout_margin="2dp"
+                                android:text="@{bdTroopData.troops.get(2).count}"
+                                android:textColor="@android:color/white"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="match_parent">
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@drawable/clone_troops">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/dark_transparent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.2"
+                        android:id="@+id/labelCloneTroopers"
+                        android:text="Clone Troopers"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_margin="4dp"
+                        android:background="@android:color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:text="Strength"
+                                android:textColor="@android:color/white"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/progressCtStrength"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:max="10"
+                                android:progress="@{troop.strength}"
+                                android:progressDrawable="@drawable/circular_progress" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:text="Agility"
+                                android:textColor="@android:color/white"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/progressCtAgility"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:max="10"
+                                android:progress="@{troop.agility}"
+                                android:progressDrawable="@drawable/circular_progress" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:text="Intelligence"
+                                android:textColor="@android:color/white"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/progressCtIntelligence"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:max="10"
+                                android:progress="@{troop.intelligence}"
+                                android:progressDrawable="@drawable/circular_progress" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_margin="4dp"
+                        android:background="@android:color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/battle_droid_b1" />
+
+                            <TextView
+                                android:id="@+id/c1Count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:layout_margin="2dp"
+                                android:text="4 troops"
+                                android:textColor="@android:color/white"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/battle_droid_b2" />
+
+                            <TextView
+                                android:id="@+id/c2Count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:layout_margin="2dp"
+                                android:text="4 troops"
+                                android:textColor="@android:color/white"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/battle_droid_aat" />
+
+                            <TextView
+                                android:id="@+id/c3Count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:singleLine="false"
+                                android:textStyle="bold"
+                                android:layout_margin="2dp"
+                                android:text="4 troops"
+                                android:textColor="@android:color/white"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

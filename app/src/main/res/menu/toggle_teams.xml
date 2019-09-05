@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/toggle_clone_troops"
+        android:title="Clone Trooper" />
+
+    <item
+        android:id="@+id/toggle_battle_droid"
+        android:title="Battle Droid" />
+
+</menu>
