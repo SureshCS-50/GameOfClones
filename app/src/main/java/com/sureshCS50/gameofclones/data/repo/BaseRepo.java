@@ -14,14 +14,14 @@ import java.util.Set;
 
 public class BaseRepo<E extends BaseDao, T extends BaseEntity> {
 
-    protected E mDao;
+    E mDao;
 
-    protected List<T> listAll(String tableName) {
+    List<T> listAll(String tableName) {
         SimpleSQLiteQuery query = new SimpleSQLiteQuery("SELECT * FROM " + tableName);
         return mDao.listAll(query);
     }
 
-    protected List<T> findItem(String tableName, HashMap<String, String> fields) {
+    List<T> findItem(String tableName, HashMap<String, String> fields) {
         StringBuilder query = new StringBuilder("SELECT * FROM " + tableName + " WHERE ");
         String equals = " LIKE ";
         String separator = " OR ";

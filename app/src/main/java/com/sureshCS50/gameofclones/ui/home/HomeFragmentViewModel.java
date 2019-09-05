@@ -15,13 +15,13 @@ public class HomeFragmentViewModel extends ViewModel {
     private TroopsAdapter mAdapter;
     private MainViewModel mSharedViewModel;
 
-    public HomeFragmentViewModel(MainViewModel mainViewModel) {
+    HomeFragmentViewModel(MainViewModel mainViewModel) {
         mSharedViewModel = mainViewModel;
         mSelectedTroop = new MutableLiveData<>();
         mAdapter = new TroopsAdapter(this);
     }
 
-    public MutableLiveData<Troop> getSelectedTroop() {
+    MutableLiveData<Troop> getSelectedTroop() {
         return mSelectedTroop;
     }
 
@@ -33,15 +33,16 @@ public class HomeFragmentViewModel extends ViewModel {
         return mAdapter;
     }
 
-    public Troop getTroopAt(Integer index) {
+    Troop getTroopAt(Integer index) {
         return mSharedViewModel.getTroops().getValue().get(index);
     }
 
-    public void notifyAdapterDateSetChanged(List<Troop> troops) {
+    void notifyAdapterDateSetChanged(List<Troop> troops) {
         mAdapter.submitList(troops);
     }
 
     public void onCreateBattleClick(){
         mSharedViewModel.setNavigation(NavigationHandler.NEW_BATTLE);
     }
+
 }

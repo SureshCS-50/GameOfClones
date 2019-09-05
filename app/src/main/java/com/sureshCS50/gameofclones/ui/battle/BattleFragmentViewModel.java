@@ -17,13 +17,14 @@ import java.util.Random;
 public class BattleFragmentViewModel extends ViewModel {
 
     private static final String TAG = "BattleFragmentViewModel";
-    MainViewModel mSharedViewModel;
-    DatabaseManager mDatabaseManager;
+
+    private MainViewModel mSharedViewModel;
+    private DatabaseManager mDatabaseManager;
     MutableLiveData<TroopData> bdTroopData;
     MutableLiveData<TroopData> ctTroopData;
     MutableLiveData<Boolean> showCreateCTArmyPopup;
 
-    public BattleFragmentViewModel(MainViewModel sharedViewModel) {
+    BattleFragmentViewModel(MainViewModel sharedViewModel) {
         this.bdTroopData = new MutableLiveData<>();
         this.ctTroopData = new MutableLiveData<>();
         this.mSharedViewModel = sharedViewModel;
@@ -31,7 +32,7 @@ public class BattleFragmentViewModel extends ViewModel {
         this.showCreateCTArmyPopup = new MutableLiveData<>();
     }
 
-    public void createBattleDroidArmy() {
+    void createBattleDroidArmy() {
         TroopData troopData = new TroopData();
         troopData.troops = new ArrayList<>();
         troopData.troopType = Constants.bd;
@@ -81,7 +82,7 @@ public class BattleFragmentViewModel extends ViewModel {
         return count * value;
     }
 
-    public void setCtTroopData(TroopData troopData) {
+    void setCtTroopData(TroopData troopData) {
         ctTroopData.setValue(troopData);
     }
 

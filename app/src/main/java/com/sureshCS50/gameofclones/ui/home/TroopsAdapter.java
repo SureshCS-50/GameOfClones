@@ -28,7 +28,7 @@ public class TroopsAdapter extends ListAdapter<Troop, TroopViewHolder> {
 
     private HomeFragmentViewModel viewModel;
 
-    public TroopsAdapter(HomeFragmentViewModel viewModel) {
+    TroopsAdapter(HomeFragmentViewModel viewModel) {
         super(DIFF_CALLBACK);
         this.viewModel = viewModel;
     }

@@ -9,11 +9,11 @@ import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
 import com.sureshCS50.gameofclones.databinding.ItemCreateTroopBinding;
 
-public class CreateTroopViewHolder extends RecyclerView.ViewHolder {
+class CreateTroopViewHolder extends RecyclerView.ViewHolder {
 
     private final ItemCreateTroopBinding binder;
 
-    public CreateTroopViewHolder (ItemCreateTroopBinding binder) {
+    CreateTroopViewHolder(ItemCreateTroopBinding binder) {
         super(binder.getRoot());
         this.binder = binder;
     }
@@ -35,4 +35,3 @@ public class CreateTroopViewHolder extends RecyclerView.ViewHolder {
         binder.executePendingBindings();
     }
 }
-

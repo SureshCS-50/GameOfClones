@@ -14,14 +14,14 @@ import java.util.ArrayList;
 
 public class CreateCTTroopDialogViewModel extends ViewModel {
 
-    MutableLiveData<ArrayList<Troop>> mCtTroops;
-    DatabaseManager mDatabaseManager;
-    CreateTroopFragmentCommunicator mCommunicator;
-    MutableLiveData<String> errorMessage;
+    private MutableLiveData<ArrayList<Troop>> mCtTroops;
+    private DatabaseManager mDatabaseManager;
+    private CreateTroopFragmentCommunicator mCommunicator;
+    private MutableLiveData<String> errorMessage;
 
     private CreateTroopsAdapter mAdapter;
 
-    public CreateCTTroopDialogViewModel (CreateTroopFragmentCommunicator communicator) {
+    CreateCTTroopDialogViewModel(CreateTroopFragmentCommunicator communicator) {
         mCommunicator = communicator;
         mDatabaseManager = DatabaseManager.getInstance();
         mCtTroops = new MutableLiveData<>();
@@ -29,16 +29,16 @@ public class CreateCTTroopDialogViewModel extends ViewModel {
         mAdapter = new CreateTroopsAdapter(this);
     }
 
-    public MutableLiveData<ArrayList<Troop>> getCtTroops(){
+    MutableLiveData<ArrayList<Troop>> getCtTroops(){
         mCtTroops.setValue(new ArrayList<>(mDatabaseManager.getTroopsByType(Constants.ct)));
         return mCtTroops;
     }
 
-    public void notifyAdapter(ArrayList<Troop> troops) {
+    void notifyAdapter(ArrayList<Troop> troops) {
         mAdapter.submitList(troops);
     }
 
-    public Troop getTroopAt(int position) {
+    Troop getTroopAt(int position) {
         return mCtTroops.getValue().get(position);
     }
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class MainModel extends BaseObservable {
 
-    public MutableLiveData<Integer> navigation = new MutableLiveData<>();
-    public MutableLiveData<ArrayList<Troop>> troops = new MutableLiveData<>();
+    MutableLiveData<Integer> navigation = new MutableLiveData<>();
+    MutableLiveData<ArrayList<Troop>> troops = new MutableLiveData<>();
 
 }

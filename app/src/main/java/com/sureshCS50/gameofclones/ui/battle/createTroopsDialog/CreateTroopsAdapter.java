@@ -31,7 +31,7 @@ public class CreateTroopsAdapter extends ListAdapter<Troop, CreateTroopViewHolde
 
     private CreateCTTroopDialogViewModel viewModel;
 
-    public CreateTroopsAdapter(CreateCTTroopDialogViewModel viewModel) {
+    CreateTroopsAdapter(CreateCTTroopDialogViewModel viewModel) {
         super(DIFF_CALLBACK);
         this.viewModel = viewModel;
     }

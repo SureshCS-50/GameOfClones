@@ -9,7 +9,7 @@ public class TroopViewHolder extends RecyclerView.ViewHolder {
 
     private final ItemTroopBinding binder;
 
-    public TroopViewHolder(ItemTroopBinding binder) {
+    TroopViewHolder(ItemTroopBinding binder) {
         super(binder.getRoot());
         this.binder = binder;
     }
@@ -20,4 +20,5 @@ public class TroopViewHolder extends RecyclerView.ViewHolder {
         binder.setTroop(selectedTroop);
         binder.executePendingBindings();
     }
+
 }

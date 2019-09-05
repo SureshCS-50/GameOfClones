@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements NavigationHandler
 
     private FragmentManager mFragmentManager;
     private MainViewModel mViewModel;
-    private DatabaseManager mDatabaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +36,12 @@ public class MainActivity extends AppCompatActivity implements NavigationHandler
         DataBindingUtil.setContentView(this, R.layout.activity_main);
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         mFragmentManager = getSupportFragmentManager();
-        mDatabaseManager = DatabaseManager.getInstance();
+        DatabaseManager databaseManager = DatabaseManager.getInstance();
 
         observerNavigation();
         observerOnLoadDateComplete();
 
-        mViewModel.setTroops(new ArrayList<>(mDatabaseManager.listAllTroops()));
+        mViewModel.setTroops(new ArrayList<>(databaseManager.listAllTroops()));
         mViewModel.setNavigation(NavigationHandler.HOME);
     }
 

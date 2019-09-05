@@ -24,7 +24,7 @@ public class CreateCTTroopDialog extends DialogFragment {
 
     public static final String TAG = "CreateCTTroopDialog";
 
-    FragmentCreateCttroopDialogBinding binding;
+    private FragmentCreateCttroopDialogBinding binding;
     private CreateCTTroopDialogViewModel mViewModel;
 
     public CreateCTTroopDialog() {
@@ -47,8 +47,8 @@ public class CreateCTTroopDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,
-                R.layout.fragment_create_cttroop_dialog, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_cttroop_dialog,
+                container, false);
         mViewModel = new CreateCTTroopDialogViewModel((CreateTroopFragmentCommunicator) getTargetFragment());
         binding.setViewModel(mViewModel);
         return binding.getRoot();
@@ -57,7 +57,6 @@ public class CreateCTTroopDialog extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         mViewModel.getCtTroops().observe(this, new Observer<ArrayList<Troop>>() {
             @Override
             public void onChanged(ArrayList<Troop> troops) {
@@ -65,4 +64,5 @@ public class CreateCTTroopDialog extends DialogFragment {
             }
         });
     }
+
 }

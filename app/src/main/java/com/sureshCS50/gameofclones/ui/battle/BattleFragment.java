@@ -29,15 +29,14 @@ import com.sureshCS50.gameofclones.ui.battle.createTroopsDialog.CreateTroopFragm
  */
 public class BattleFragment extends Fragment implements CreateTroopFragmentCommunicator {
 
-    MainViewModel mSharedViewModel;
-    BattleFragmentViewModel mViewModel;
-    FragmentBattleBinding binding;
-    CreateCTTroopDialog createCTTroopDialog;
+    private MainViewModel mSharedViewModel;
+    private BattleFragmentViewModel mViewModel;
+    private FragmentBattleBinding binding;
+    private CreateCTTroopDialog createCTTroopDialog;
 
     public BattleFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
