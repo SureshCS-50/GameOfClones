@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sureshCS50.gameofclones.ui.battle.createTroopsDialog.CreateCTTroopDialogViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_transparent">
+
+        <RelativeLayout
+            android:id="@+id/lytButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btnCreate"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="4dp"
+                android:background="@color/colorAccent"
+                android:onClick="@{() -> viewModel.createTroops()}"
+                android:text="Create"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_margin="4dp"
+                android:layout_toStartOf="@+id/btnCreate"
+                android:layout_toLeftOf="@+id/btnCreate"
+                android:background="@color/colorAccent"
+                android:onClick="@{() -> viewModel.cancelDialog()()}"
+                android:text="Cancel"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/lytButtons"
+            android:divider="@color/colorAccent"
+            android:dividerHeight="0.1dp"
+            app:setAdapter="@{viewModel.getAdapter()}" />
+
+    </RelativeLayout>
+
+</layout>

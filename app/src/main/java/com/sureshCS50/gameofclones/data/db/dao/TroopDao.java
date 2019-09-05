@@ -13,4 +13,7 @@ public interface TroopDao extends BaseDao<Troop> {
     @Query("SELECT * FROM " + Troop.TABLE_NAME + " WHERE " + Troop.COLUMN_KIND + " =:kind")
     List<Troop> getTroopByKind(String kind);
 
+    @Query("SELECT * FROM " + Troop.TABLE_NAME + " WHERE " + Troop.COLUMN_TYPE + " =:type")
+    List<Troop> getTroopsByType(String type);
+
 }

@@ -1,6 +1,7 @@
 package com.sureshCS50.gameofclones.utils;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 import androidx.databinding.BindingAdapter;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BindingUtils {
+
     @BindingAdapter("setAdapter")
     public static void bindRecyclerViewAdapter(RecyclerView recyclerView, RecyclerView.Adapter<?> adapter) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
@@ -18,6 +20,9 @@ public class BindingUtils {
 
     @BindingAdapter("load_image")
     public static void loadImage(ImageView view, String kind) {
-        view.setImageResource(Constants.getImageResource(kind));
+        if(kind != null) {
+            view.setImageResource(Constants.getImageResource(kind));
+        }
     }
+
 }

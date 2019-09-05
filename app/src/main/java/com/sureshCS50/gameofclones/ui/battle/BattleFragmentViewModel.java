@@ -1,5 +1,7 @@
 package com.sureshCS50.gameofclones.ui.battle;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -14,15 +16,19 @@ import java.util.Random;
 
 public class BattleFragmentViewModel extends ViewModel {
 
+    private static final String TAG = "BattleFragmentViewModel";
     MainViewModel mSharedViewModel;
     DatabaseManager mDatabaseManager;
     MutableLiveData<TroopData> bdTroopData;
     MutableLiveData<TroopData> ctTroopData;
+    MutableLiveData<Boolean> showCreateCTArmyPopup;
 
     public BattleFragmentViewModel(MainViewModel sharedViewModel) {
         this.bdTroopData = new MutableLiveData<>();
+        this.ctTroopData = new MutableLiveData<>();
         this.mSharedViewModel = sharedViewModel;
         this.mDatabaseManager = DatabaseManager.getInstance();
+        this.showCreateCTArmyPopup = new MutableLiveData<>();
     }
 
     public void createBattleDroidArmy() {
@@ -59,6 +65,11 @@ public class BattleFragmentViewModel extends ViewModel {
         bdTroopData.setValue(troopData);
     }
 
+    public void createCloneTroopersArmy() {
+        showCreateCTArmyPopup.setValue(true);
+        showCreateCTArmyPopup.postValue(false);
+    }
+
     private int getRandom() {
         Random r = new Random();
         int low = 1;
@@ -66,8 +77,12 @@ public class BattleFragmentViewModel extends ViewModel {
         return r.nextInt(high-low) + low;
     }
 
-
     private int getValue(int count, int value){
         return count * value;
     }
+
+    public void setCtTroopData(TroopData troopData) {
+        ctTroopData.setValue(troopData);
+    }
+
 }

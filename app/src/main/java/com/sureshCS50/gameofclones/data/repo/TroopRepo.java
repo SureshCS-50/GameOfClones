@@ -24,6 +24,11 @@ public class TroopRepo extends BaseRepo<TroopDao, Troop> implements TroopDbHelpe
     }
 
     @Override
+    public List<Troop> getTroopsByType(String type) {
+        return mDao.getTroopsByType(type);
+    }
+
+    @Override
     public void insertTroop(Troop object) {
         mDao.insertRecord(object);
     }

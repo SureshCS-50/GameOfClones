@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable type="com.sureshCS50.gameofclones.ui.battle.BattleFragmentViewModel"
+            name="viewModel"/>
+
         <variable
             type="com.sureshCS50.gameofclones.data.db.entity.Troop"
             name="troop" />
@@ -10,6 +15,10 @@
         <variable
             type="com.sureshCS50.gameofclones.models.TroopData"
             name="bdTroopData"/>
+
+        <variable
+            type="com.sureshCS50.gameofclones.models.TroopData"
+            name="ctTroopData"/>
     </data>
 
     <RelativeLayout
@@ -267,12 +276,13 @@
                 android:layout_weight="0.4"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
+                android:onClick="@{() -> viewModel.createCloneTroopersArmy()}"
                 android:background="@drawable/clone_troops">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/dark_transparent"/>
+                    android:background="@color/dark_transparent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -324,8 +334,8 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:max="10"
-                                android:progress="@{troop.strength}"
+                                android:max="100"
+                                android:progress="@{ctTroopData.totalStrength}"
                                 android:progressDrawable="@drawable/circular_progress" />
                         </LinearLayout>
 
@@ -350,8 +360,8 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:max="10"
-                                android:progress="@{troop.agility}"
+                                android:max="100"
+                                android:progress="@{ctTroopData.totalAgility}"
                                 android:progressDrawable="@drawable/circular_progress" />
                         </LinearLayout>
 
@@ -376,8 +386,8 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:max="10"
-                                android:progress="@{troop.intelligence}"
+                                android:max="100"
+                                android:progress="@{ctTroopData.totalIntelligence}"
                                 android:progressDrawable="@drawable/circular_progress" />
                         </LinearLayout>
 
@@ -405,7 +415,7 @@
                             <ImageView
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:src="@drawable/clone_jetpack" />
+                                app:load_image="@{ctTroopData.troops.get(0).kind}" />
 
                             <TextView
                                 android:id="@+id/c1Count"
@@ -415,7 +425,7 @@
                                 android:singleLine="false"
                                 android:textStyle="bold"
                                 android:layout_margin="2dp"
-                                android:text="4"
+                                android:text="@{String.valueOf(ctTroopData.troops.get(0).count)}"
                                 android:textColor="@android:color/white"
                                 />
                         </LinearLayout>
@@ -429,7 +439,7 @@
                             <ImageView
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:src="@drawable/clone_commandos" />
+                                app:load_image="@{ctTroopData.troops.get(1).kind}" />
 
                             <TextView
                                 android:id="@+id/c2Count"
@@ -439,7 +449,7 @@
                                 android:singleLine="false"
                                 android:textStyle="bold"
                                 android:layout_margin="2dp"
-                                android:text="4"
+                                android:text="@{String.valueOf(ctTroopData.troops.get(1).count)}"
                                 android:textColor="@android:color/white"
                                 />
                         </LinearLayout>
@@ -453,7 +463,7 @@
                             <ImageView
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:src="@drawable/clone_ordnance_specialist" />
+                                app:load_image="@{ctTroopData.troops.get(2).kind}" />
 
                             <TextView
                                 android:id="@+id/c3Count"
@@ -463,7 +473,7 @@
                                 android:singleLine="false"
                                 android:textStyle="bold"
                                 android:layout_margin="2dp"
-                                android:text="4"
+                                android:text="@{String.valueOf(ctTroopData.troops.get(2).count)}"
                                 android:textColor="@android:color/white"
                                 />
 
@@ -472,6 +482,8 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
 
             </RelativeLayout>
 

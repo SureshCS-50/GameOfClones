@@ -10,4 +10,5 @@ public class TroopData {
     public int totalStrength;
     public int totalAgility;
     public int totalIntelligence;
+    public int totalTroops;
 }

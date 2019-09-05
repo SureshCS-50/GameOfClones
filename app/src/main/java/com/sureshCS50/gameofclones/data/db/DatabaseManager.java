@@ -44,6 +44,11 @@ public class DatabaseManager implements DbHelper {
     }
 
     @Override
+    public List<Troop> getTroopsByType(String type) {
+        return mTroopRepoInstance.getTroopsByType(type);
+    }
+
+    @Override
     public void insertTroop(Troop object) {
         mTroopRepoInstance.insertTroop(object);
     }
