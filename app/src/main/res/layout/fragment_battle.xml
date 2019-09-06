@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable type="com.sureshCS50.gameofclones.ui.battle.BattleFragmentViewModel"
             name="viewModel"/>
 
