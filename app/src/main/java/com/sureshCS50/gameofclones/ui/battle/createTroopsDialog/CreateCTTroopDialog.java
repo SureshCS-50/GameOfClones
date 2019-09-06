@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
@@ -55,12 +56,19 @@ public class CreateCTTroopDialog extends DialogFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel.getCtTroops().observe(this, new Observer<ArrayList<Troop>>() {
             @Override
             public void onChanged(ArrayList<Troop> troops) {
                 mViewModel.notifyAdapter(troops);
+            }
+        });
+
+        mViewModel.errorMessage.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getActivity(), mViewModel.errorMessage.getValue(), Toast.LENGTH_SHORT);
             }
         });
     }

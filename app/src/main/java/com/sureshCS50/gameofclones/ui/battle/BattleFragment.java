@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
@@ -56,6 +57,13 @@ public class BattleFragment extends Fragment implements CreateTroopFragmentCommu
         observeBdArmy();
         observeShowCreateCTArmyPopup();
         observeCtArmy();
+
+        mViewModel.errorMessage.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getActivity(), s, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void observeCtArmy() {

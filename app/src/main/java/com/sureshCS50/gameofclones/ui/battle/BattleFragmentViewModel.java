@@ -1,15 +1,17 @@
 package com.sureshCS50.gameofclones.ui.battle;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.gson.reflect.TypeToken;
 import com.sureshCS50.gameofclones.data.db.DatabaseManager;
+import com.sureshCS50.gameofclones.data.db.entity.Battle;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
 import com.sureshCS50.gameofclones.models.TroopData;
 import com.sureshCS50.gameofclones.ui.appActivity.MainViewModel;
 import com.sureshCS50.gameofclones.utils.Constants;
+import com.sureshCS50.gameofclones.utils.NavigationHandler;
+import com.sureshCS50.gameofclones.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,15 +19,18 @@ import java.util.Random;
 public class BattleFragmentViewModel extends ViewModel {
 
     private static final String TAG = "BattleFragmentViewModel";
-
-    private DatabaseManager mDatabaseManager;
     MutableLiveData<TroopData> bdTroopData;
     MutableLiveData<TroopData> ctTroopData;
     MutableLiveData<Boolean> showCreateCTArmyPopup;
+    MutableLiveData<String> errorMessage;
+    private DatabaseManager mDatabaseManager;
+    private MainViewModel mSharedViewModel;
 
     BattleFragmentViewModel(MainViewModel sharedViewModel) {
+        this.mSharedViewModel = sharedViewModel;
         this.bdTroopData = new MutableLiveData<>();
         this.ctTroopData = new MutableLiveData<>();
+        this.errorMessage = new MutableLiveData<>();
         this.mDatabaseManager = DatabaseManager.getInstance();
         this.showCreateCTArmyPopup = new MutableLiveData<>();
     }
@@ -58,9 +63,9 @@ public class BattleFragmentViewModel extends ViewModel {
         troopData.troops.add(aat);
         troopData.totalTroops = b1.count + b2.count + aat.count;
 
-        troopData.totalStrength = ((b1.strength + b2.strength + aat.strength)*100)/6000;
-        troopData.totalAgility = ((b1.agility + b2.agility + aat.agility)*100)/6000;
-        troopData.totalIntelligence = ((b1.intelligence + b2.intelligence + aat.intelligence)*100)/6000;
+        troopData.totalStrength = ((b1.strength + b2.strength + aat.strength) * 100) / 6000;
+        troopData.totalAgility = ((b1.agility + b2.agility + aat.agility) * 100) / 6000;
+        troopData.totalIntelligence = ((b1.intelligence + b2.intelligence + aat.intelligence) * 100) / 6000;
 
         bdTroopData.setValue(troopData);
     }
@@ -74,15 +79,49 @@ public class BattleFragmentViewModel extends ViewModel {
         Random r = new Random();
         int low = 1;
         int high = 200;
-        return r.nextInt(high-low) + low;
+        return r.nextInt(high - low) + low;
     }
 
-    private int getValue(int count, int value){
+    private int getValue(int count, int value) {
         return count * value;
     }
 
     void setCtTroopData(TroopData troopData) {
         ctTroopData.setValue(troopData);
+    }
+
+    public void startBattle() {
+        TroopData bdTroops = bdTroopData.getValue();
+        TroopData ctTroops = ctTroopData.getValue();
+
+        if (ctTroops == null || ctTroops.totalTroops < 1) {
+            errorMessage.setValue("Please select Clone Troops Army");
+            return;
+        }
+
+        int ctTroopCount = ctTroops.totalTroops * 2 / 3;
+
+        if (bdTroops.totalTroops >= ctTroopCount) {
+            Battle battle = new Battle();
+            battle.bdTroops = Utils.convertObjectToStringJson(bdTroopData.getValue(), new TypeToken<TroopData>() {
+            }.getType());
+            battle.ctTroops = Utils.convertObjectToStringJson(ctTroopData.getValue(), new TypeToken<TroopData>() {
+            }.getType());
+
+            int bdTroopValues = bdTroops.totalStrength + bdTroops.totalAgility + bdTroops.totalIntelligence;
+            int ctTroopValues = (ctTroops.totalStrength + ctTroops.totalAgility + ctTroops.totalIntelligence) * 3/2;
+
+            battle.winner = (bdTroopValues > ctTroopValues) ? Constants.bd : Constants.ct;
+            String loser = (battle.winner.equalsIgnoreCase(Constants.bd)) ? Constants.ct : Constants.bd;
+
+            battle.summary = battle.winner + " Won the battle. The total Strength, Agility and Intelligence of " + battle.winner + " is greater than " + loser;
+
+            mDatabaseManager.insertBattle(battle);
+
+            mSharedViewModel.setNavigation(NavigationHandler.BATTLE_RESULT);
+        } else {
+            errorMessage.setValue("Clone troopers army count is Greater than Battle Droids");
+        }
     }
 
 }

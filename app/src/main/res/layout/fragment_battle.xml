@@ -42,6 +42,7 @@
             android:background="@color/colorAccent"
             android:layout_margin="4dp"
             android:text="Start Battle"
+            android:onClick="@{() -> viewModel.startBattle()}"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@android:color/black" />
 
@@ -49,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/btnCreateBattle"
-            android:padding="16dp"
+            android:padding="8dp"
             android:weightSum="1"
             android:gravity="center"
             android:orientation="horizontal">
@@ -60,7 +61,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:background="@drawable/droid_soliders">
-                
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -335,7 +336,7 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:max="10"
+                                android:max="100"
                                 android:progress="@{ctTroopData.totalStrength}"
                                 android:progressDrawable="@drawable/circular_progress" />
                         </LinearLayout>
@@ -361,7 +362,7 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:max="10"
+                                android:max="100"
                                 android:progress="@{ctTroopData.totalAgility}"
                                 android:progressDrawable="@drawable/circular_progress" />
                         </LinearLayout>
@@ -387,7 +388,7 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:max="10"
+                                android:max="100"
                                 android:progress="@{ctTroopData.totalIntelligence}"
                                 android:progressDrawable="@drawable/circular_progress" />
                         </LinearLayout>

@@ -17,7 +17,7 @@ public class CreateCTTroopDialogViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Troop>> mCtTroops;
     private DatabaseManager mDatabaseManager;
     private CreateTroopFragmentCommunicator mCommunicator;
-    private MutableLiveData<String> errorMessage;
+    MutableLiveData<String> errorMessage;
 
     private CreateTroopsAdapter mAdapter;
 
