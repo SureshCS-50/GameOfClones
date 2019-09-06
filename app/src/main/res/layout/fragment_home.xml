@@ -19,6 +19,8 @@
         android:orientation="horizontal"
         android:padding="8dp"
         android:weightSum="1"
+        android:focusable="true"
+        android:clickable="true"
         tools:context=".ui.home.HomeFragment">
 
         <RelativeLayout

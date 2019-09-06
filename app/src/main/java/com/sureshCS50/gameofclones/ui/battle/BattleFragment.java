@@ -20,6 +20,7 @@ import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
 import com.sureshCS50.gameofclones.databinding.FragmentBattleBinding;
 import com.sureshCS50.gameofclones.models.TroopData;
+import com.sureshCS50.gameofclones.ui.BaseFragment;
 import com.sureshCS50.gameofclones.ui.appActivity.MainActivity;
 import com.sureshCS50.gameofclones.ui.appActivity.MainViewModel;
 import com.sureshCS50.gameofclones.ui.battle.createTroopsDialog.CreateCTTroopDialog;
@@ -28,9 +29,8 @@ import com.sureshCS50.gameofclones.ui.battle.createTroopsDialog.CreateTroopFragm
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BattleFragment extends Fragment implements CreateTroopFragmentCommunicator {
+public class BattleFragment extends BaseFragment implements CreateTroopFragmentCommunicator {
 
-    private MainViewModel mSharedViewModel;
     private BattleFragmentViewModel mViewModel;
     private FragmentBattleBinding binding;
     private CreateCTTroopDialog createCTTroopDialog;
@@ -100,21 +100,6 @@ public class BattleFragment extends Fragment implements CreateTroopFragmentCommu
                 binding.setBdTroopData(troopData);
             }
         });
-    }
-
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (getActivity() != null) {
-            mSharedViewModel = ((MainActivity) getActivity()).getSharedViewModel();
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mSharedViewModel = null;
     }
 
     @Override

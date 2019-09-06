@@ -82,4 +82,9 @@ public class DatabaseManager implements DbHelper {
     public void insertBattle(Battle object) {
         mBattleRepoInstance.insertBattle(object);
     }
+
+    @Override
+    public Battle getLastRecord() {
+        return mBattleRepoInstance.getLastRecord();
+    }
 }

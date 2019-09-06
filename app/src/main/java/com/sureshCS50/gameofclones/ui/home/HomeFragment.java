@@ -15,15 +15,15 @@ import androidx.lifecycle.Observer;
 import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
 import com.sureshCS50.gameofclones.databinding.FragmentHomeBinding;
+import com.sureshCS50.gameofclones.ui.BaseFragment;
 import com.sureshCS50.gameofclones.ui.appActivity.MainActivity;
 import com.sureshCS50.gameofclones.ui.appActivity.MainViewModel;
 
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private FragmentHomeBinding binding;
-    private MainViewModel mSharedViewModel;
     private HomeFragmentViewModel viewModel;
 
     public HomeFragment() {
@@ -61,20 +61,6 @@ public class HomeFragment extends Fragment {
                 binding.setTroop(troop);
             }
         });
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (getActivity() != null) {
-            mSharedViewModel = ((MainActivity) getActivity()).getSharedViewModel();
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mSharedViewModel = null;
     }
 
 }

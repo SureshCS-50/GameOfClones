@@ -12,4 +12,6 @@ public interface BattleDbHelper {
     List<Battle> findCard(HashMap<String, String> fields);
 
     void insertBattle(Battle object);
+
+    Battle getLastRecord();
 }

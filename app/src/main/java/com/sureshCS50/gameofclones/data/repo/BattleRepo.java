@@ -29,5 +29,9 @@ public class BattleRepo extends BaseRepo<BattleDao, Battle> implements BattleDbH
         mDao.insertRecord(object);
     }
 
+    @Override
+    public Battle getLastRecord() {
+        return mDao.getLastRecord();
+    }
 
 }
