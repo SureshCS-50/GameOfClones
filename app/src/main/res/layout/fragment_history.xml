@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
+    <data>
+        <variable type="com.sureshCS50.gameofclones.ui.history.HistoryFragmentViewModel"
+            name="viewModel"/>
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/battle_history"
         android:clickable="true"
         android:focusable="true"
-        tools:context=".ui.history.HistoryFragment">
+        android:background="@drawable/battle_history">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_transparent"/>
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/btnClose"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorAccent"
+            android:padding="8dp"
+            android:layout_margin="4dp"
+            android:onClick="@{() -> viewModel.onCloseButtonClick()}"
+            android:text="Close"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btnClose"
+            android:divider="@color/colorAccent"
+            android:dividerHeight="0.1dp"
+            android:layout_margin="4dp"
+            android:background="@color/grey" />
+
+    </RelativeLayout>
+
 </layout>

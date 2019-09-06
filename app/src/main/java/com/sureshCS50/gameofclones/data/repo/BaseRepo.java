@@ -21,6 +21,11 @@ public class BaseRepo<E extends BaseDao, T extends BaseEntity> {
         return mDao.listAll(query);
     }
 
+    List<T> listAll(String tableName, String columnName, String order) {
+        SimpleSQLiteQuery query = new SimpleSQLiteQuery("SELECT * FROM " + tableName + " ORDER BY " + columnName + " " + order);
+        return mDao.listAll(query);
+    }
+
     List<T> findItem(String tableName, HashMap<String, String> fields) {
         StringBuilder query = new StringBuilder("SELECT * FROM " + tableName + " WHERE ");
         String equals = " LIKE ";

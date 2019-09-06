@@ -1,5 +1,6 @@
 package com.sureshCS50.gameofclones.data.db.entity;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -79,5 +80,10 @@ public class Battle extends BaseEntity{
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
     }
 }

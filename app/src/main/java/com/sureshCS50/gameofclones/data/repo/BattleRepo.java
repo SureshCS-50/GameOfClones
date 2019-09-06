@@ -16,7 +16,7 @@ public class BattleRepo extends BaseRepo<BattleDao, Battle> implements BattleDbH
 
     @Override
     public List<Battle> listAllBattles() {
-        return listAll(Battle.TABLE_NAME);
+        return listAll(Battle.TABLE_NAME, Battle.COLUMN_ID, "DESC");
     }
 
     @Override
