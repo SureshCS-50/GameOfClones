@@ -68,7 +68,7 @@ public class CreateCTTroopDialog extends DialogFragment {
         mViewModel.errorMessage.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Toast.makeText(getActivity(), mViewModel.errorMessage.getValue(), Toast.LENGTH_SHORT);
+                Toast.makeText(getActivity(), mViewModel.errorMessage.getValue(), Toast.LENGTH_SHORT).show();
             }
         });
     }

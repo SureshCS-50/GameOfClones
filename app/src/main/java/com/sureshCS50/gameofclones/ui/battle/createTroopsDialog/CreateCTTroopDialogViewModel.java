@@ -1,7 +1,5 @@
 package com.sureshCS50.gameofclones.ui.battle.createTroopsDialog;
 
-import android.widget.Toast;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -68,7 +66,7 @@ public class CreateCTTroopDialogViewModel extends ViewModel {
         }
 
         if(count < 3) {
-            errorMessage.setValue("Please select atleast 3 troops");
+            errorMessage.setValue("Please select at least 3 troops");
         } else {
             TroopData troopData = new TroopData();
             troopData.troops = new ArrayList<>();
