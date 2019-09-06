@@ -101,15 +101,19 @@ public class BattleFragmentViewModel extends ViewModel {
 
         int ctTroopCount = ctTroops.totalTroops * 2 / 3;
 
-        if (bdTroops.totalTroops >= ctTroopCount) {
+        if (bdTroops != null && bdTroops.totalTroops >= ctTroopCount) {
             Battle battle = new Battle();
-            battle.bdTroops = Utils.convertObjectToStringJson(bdTroopData.getValue(), new TypeToken<TroopData>() {
-            }.getType());
-            battle.ctTroops = Utils.convertObjectToStringJson(ctTroopData.getValue(), new TypeToken<TroopData>() {
-            }.getType());
 
             int bdTroopValues = bdTroops.totalStrength + bdTroops.totalAgility + bdTroops.totalIntelligence;
             int ctTroopValues = (ctTroops.totalStrength + ctTroops.totalAgility + ctTroops.totalIntelligence) * 3/2;
+
+            bdTroops.totalCalculatedValue = bdTroopValues;
+            ctTroops.totalCalculatedValue = ctTroopValues;
+
+            battle.bdTroops = Utils.convertObjectToStringJson(bdTroops, new TypeToken<TroopData>() {
+            }.getType());
+            battle.ctTroops = Utils.convertObjectToStringJson(ctTroops, new TypeToken<TroopData>() {
+            }.getType());
 
             battle.winner = (bdTroopValues > ctTroopValues) ? Constants.bd : Constants.ct;
             String loser = (battle.winner.equalsIgnoreCase(Constants.bd)) ? Constants.ct : Constants.bd;
