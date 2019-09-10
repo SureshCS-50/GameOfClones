@@ -40,7 +40,7 @@ public class HistoryFragmentViewModel extends ViewModel {
     }
 
     public void onItemClick(Battle battle){
-        // show detail..
+        mSharedViewModel.setBattle(battle);
     }
 
     public HistoryAdapter getAdapter(){

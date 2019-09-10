@@ -11,9 +11,11 @@ import android.os.Bundle;
 
 import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.DatabaseManager;
+import com.sureshCS50.gameofclones.data.db.entity.Battle;
 import com.sureshCS50.gameofclones.data.db.entity.Troop;
 import com.sureshCS50.gameofclones.ui.battle.BattleFragment;
 import com.sureshCS50.gameofclones.ui.battle_result.BattleResultFragment;
+import com.sureshCS50.gameofclones.ui.battle_result_summary.BattleSummaryFragment;
 import com.sureshCS50.gameofclones.ui.history.HistoryFragment;
 import com.sureshCS50.gameofclones.ui.home.HomeFragment;
 import com.sureshCS50.gameofclones.utils.NavigationHandler;
@@ -43,6 +45,12 @@ public class MainActivity extends AppCompatActivity implements NavigationHandler
 
         mViewModel.setTroops(new ArrayList<>(databaseManager.listAllTroops()));
         mViewModel.setNavigation(NavigationHandler.HOME);
+        mViewModel.getBattle().observe(this, new Observer<Battle>() {
+            @Override
+            public void onChanged(Battle battle) {
+                loadFragment(BattleSummaryFragment.newInstance(battle), BattleSummaryFragment.TAG);
+            }
+        });
     }
 
     private void observerOnLoadDateComplete() {
