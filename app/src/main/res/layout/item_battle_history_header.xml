@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="@{() -> viewModel.onItemClick(battle)}"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="Battle Id"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center"
+            android:text="Teams"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="Winner"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sureshCS50.gameofclones.ui.history.HistoryFragmentViewModel" />
+
+        <variable
+            name="battle"
+            type="com.sureshCS50.gameofclones.data.db.entity.Battle" />
+
+        <variable
+            name="bdTroopData"
+            type="com.sureshCS50.gameofclones.models.TroopData" />
+
+        <variable
+            name="ctTroopData"
+            type="com.sureshCS50.gameofclones.models.TroopData" />
+    </data>
+
+</layout>

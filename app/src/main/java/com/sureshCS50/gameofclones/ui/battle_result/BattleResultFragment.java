@@ -21,6 +21,8 @@ import com.sureshCS50.gameofclones.ui.BaseFragment;
  */
 public class BattleResultFragment extends BaseFragment {
 
+    public static final String TAG = "BattleResultFragment";
+
     public BattleResultFragment() {
         // Required empty public constructor
     }

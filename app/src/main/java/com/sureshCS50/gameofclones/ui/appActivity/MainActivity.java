@@ -89,29 +89,45 @@ public class MainActivity extends AppCompatActivity implements NavigationHandler
 
     @Override
     public void loadHomeFragment() {
-        loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment(), HomeFragment.TAG);
     }
 
     @Override
     public void loadNewBattleFragment() {
-        loadFragment(new BattleFragment());
+        loadFragment(new BattleFragment(), BattleFragment.TAG);
     }
 
     @Override
     public void loadBattleResult() {
-        loadFragment(new BattleResultFragment());
+        loadFragment(new BattleResultFragment(), BattleResultFragment.TAG);
     }
 
     @Override
     public void loadBattleHistory() {
-        loadFragment(new HistoryFragment());
+        loadFragment(new HistoryFragment(), HistoryFragment.TAG);
     }
 
-    private void loadFragment(Fragment fragment) {
-        mFragmentManager
-                .beginTransaction()
-                .add(R.id.container, fragment)
-                .commit();
+    private void loadFragment(Fragment fragment, String tag) {
+        Fragment fragment1 = mFragmentManager.findFragmentByTag(tag);
+        if(fragment1 != null){
+            mFragmentManager.popBackStack(tag, 0);
+        } else {
+            mFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.container, fragment, tag)
+                    .addToBackStack(tag)
+                    .commit();
+        }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        int i = mFragmentManager.getBackStackEntryCount() - 1;
+        if(i >= 0){
+            mFragmentManager.popBackStack(mFragmentManager.getBackStackEntryAt(i).getName(), 0);
+        } else {
+            finish();
+        }
+    }
 }

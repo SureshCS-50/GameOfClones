@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.sureshCS50.gameofclones.R;
 import com.sureshCS50.gameofclones.data.db.entity.Battle;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class HistoryFragment extends BaseFragment {
+
+    public static final String TAG = "HistoryFragment";
 
     private HistoryFragmentViewModel mViewModel;
     private RecyclerView mRecyclerView;
@@ -54,6 +57,14 @@ public class HistoryFragment extends BaseFragment {
             @Override
             public void onChanged(ArrayList<Battle> battles) {
                 mViewModel.notifyAdapter(battles);
+            }
+        });
+
+        Button closeButton = view.findViewById(R.id.btnClose);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewModel.onCloseButtonClick();
             }
         });
     }

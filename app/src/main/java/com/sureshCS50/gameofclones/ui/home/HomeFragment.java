@@ -22,6 +22,7 @@ import com.sureshCS50.gameofclones.ui.appActivity.MainViewModel;
 import java.util.List;
 
 public class HomeFragment extends BaseFragment {
+    public static final String TAG = "HomeFragment";
 
     private FragmentHomeBinding binding;
     private HomeFragmentViewModel viewModel;

@@ -31,6 +31,8 @@ import com.sureshCS50.gameofclones.ui.battle.createTroopsDialog.CreateTroopFragm
  */
 public class BattleFragment extends BaseFragment implements CreateTroopFragmentCommunicator {
 
+    public static final String TAG = "BattleFragment";
+
     private BattleFragmentViewModel mViewModel;
     private FragmentBattleBinding binding;
     private CreateCTTroopDialog createCTTroopDialog;

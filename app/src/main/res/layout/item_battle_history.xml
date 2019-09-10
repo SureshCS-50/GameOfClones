@@ -16,26 +16,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:onClick="@{() -> viewModel.onItemClick(battle)}"
+        android:background="@color/black_transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="4dp"
-        android:weightSum="1"
-        android:onClick="@{() -> viewModel.onItemClick(battle)}"
-        android:background="@color/transparent">
+        android:weightSum="1">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.1"
+            android:layout_weight="0.2"
             android:gravity="center"
             tools:text="1"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:text="@{String.valueOf(battle.id)}"
             />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.7">
+            android:layout_weight="0.6">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -49,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="@{bdTroopData.troopType}" />
 
                 <LinearLayout
@@ -61,13 +66,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="Total troops : " />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="@{String.valueOf(bdTroopData.totalTroops)}" />
 
                 </LinearLayout>
@@ -85,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="@{ctTroopData.troopType}" />
 
                 <LinearLayout
@@ -98,13 +103,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:text="Total troops : " />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:text="@{String.valueOf(ctTroopData.totalTroops)}" />
 
                 </LinearLayout>
@@ -120,7 +125,15 @@
             tools:text="@string/app_name"
             android:gravity="center"
             android:text="@{battle.winner}"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent" />
+
     </LinearLayout>
 
 </layout>

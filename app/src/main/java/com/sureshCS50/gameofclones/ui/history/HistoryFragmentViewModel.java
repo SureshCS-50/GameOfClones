@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class HistoryFragmentViewModel extends ViewModel {
 
-    public MainViewModel mSharedViewModel;
+    private MainViewModel mSharedViewModel;
     public MutableLiveData<ArrayList<Battle>> battles;
     public HistoryAdapter mAdapter;
 
-    public HistoryFragmentViewModel(MainViewModel sharedViewModel){
+    HistoryFragmentViewModel(MainViewModel sharedViewModel){
         this.mSharedViewModel = sharedViewModel;
         this.battles = new MutableLiveData<>();
         mAdapter = new HistoryAdapter(this);
