@@ -45,4 +45,7 @@ public class HomeFragmentViewModel extends ViewModel {
         mSharedViewModel.setNavigation(NavigationHandler.NEW_BATTLE);
     }
 
+    public void onShowHistoryClick(){
+        mSharedViewModel.setNavigation(NavigationHandler.BATTLE_HISTORY);
+    }
 }

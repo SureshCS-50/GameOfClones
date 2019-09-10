@@ -87,4 +87,9 @@ public class DatabaseManager implements DbHelper {
     public Battle getLastRecord() {
         return mBattleRepoInstance.getLastRecord();
     }
+
+    @Override
+    public List<Battle> getRecordsByWinner(String winner) {
+        return mBattleRepoInstance.getRecordsByWinner(winner);
+    }
 }

@@ -34,4 +34,9 @@ public class BattleRepo extends BaseRepo<BattleDao, Battle> implements BattleDbH
         return mDao.getLastRecord();
     }
 
+    @Override
+    public List<Battle> getRecordsByWinner(String winner) {
+        return mDao.getRecordsByWinner(winner);
+    }
+
 }

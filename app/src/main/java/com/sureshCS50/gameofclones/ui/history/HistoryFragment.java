@@ -1,6 +1,7 @@
 package com.sureshCS50.gameofclones.ui.history;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,12 +16,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.sureshCS50.gameofclones.R;
+import com.sureshCS50.gameofclones.data.db.DatabaseManager;
 import com.sureshCS50.gameofclones.data.db.entity.Battle;
 import com.sureshCS50.gameofclones.databinding.FragmentHistoryBinding;
 import com.sureshCS50.gameofclones.ui.BaseFragment;
+import com.sureshCS50.gameofclones.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -32,7 +39,7 @@ public class HistoryFragment extends BaseFragment {
     public static final String TAG = "HistoryFragment";
 
     private HistoryFragmentViewModel mViewModel;
-    private RecyclerView mRecyclerView;
+    String[] winners = { "All", Constants.bd, Constants.ct};
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -48,7 +55,7 @@ public class HistoryFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerView);
+        RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mViewModel.getAdapter());
@@ -67,5 +74,37 @@ public class HistoryFragment extends BaseFragment {
                 mViewModel.onCloseButtonClick();
             }
         });
+
+        Spinner spinner = view.findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                String selected = winners[position];
+                ArrayList<Battle> battles;
+                switch(selected){
+                    case Constants.bd:
+                        battles = new ArrayList<>(DatabaseManager.getInstance().getRecordsByWinner(Constants.bd));
+                        break;
+                    case Constants.ct:
+                        battles = new ArrayList<>(DatabaseManager.getInstance().getRecordsByWinner(Constants.ct));
+                        break;
+                    default:
+                        battles = new ArrayList<>(DatabaseManager.getInstance().listAllBattles());
+                        break;
+                }
+
+                mViewModel.setBattles(battles);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                mViewModel.setBattles(new ArrayList<>(DatabaseManager.getInstance().listAllBattles()));
+            }
+        });
+
+        ArrayAdapter aa = new ArrayAdapter(getActivity(), R.layout.item_spinner, winners);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(aa);
     }
 }

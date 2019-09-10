@@ -19,6 +19,34 @@
             android:layout_height="match_parent"
             android:background="@color/dark_transparent"/>
 
+        <RelativeLayout
+            android:id="@+id/lytFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/white"
+            android:text="Filter Winners: "
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/spinner"
+            android:layout_toStartOf="@+id/spinner"
+            />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toLeftOf="@+id/btnClose"
+            android:layout_toStartOf="@+id/btnClose" />
+
         <Button
             android:id="@+id/btnClose"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -28,17 +56,17 @@
             android:layout_alignParentRight="true"
             android:background="@color/colorAccent"
             android:padding="8dp"
-            android:layout_margin="4dp"
             android:text="Close"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@android:color/black" />
+        </RelativeLayout>
 
         <include
             android:id="@+id/lytHeader"
             layout="@layout/item_battle_history_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnClose"
+            android:layout_below="@+id/lytFilters"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             />

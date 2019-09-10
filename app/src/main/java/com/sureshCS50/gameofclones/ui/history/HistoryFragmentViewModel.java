@@ -23,8 +23,11 @@ public class HistoryFragmentViewModel extends ViewModel {
     }
 
     public MutableLiveData<ArrayList<Battle>> getBattles(){
-        battles.setValue(new ArrayList<>(DatabaseManager.getInstance().listAllBattles()));
         return battles;
+    }
+
+    public void setBattles(ArrayList<Battle> entries){
+        battles.setValue(entries);
     }
 
     public void notifyAdapter(ArrayList<Battle> battles) {

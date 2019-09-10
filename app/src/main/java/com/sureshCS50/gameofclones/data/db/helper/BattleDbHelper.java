@@ -14,4 +14,6 @@ public interface BattleDbHelper {
     void insertBattle(Battle object);
 
     Battle getLastRecord();
+
+    List<Battle> getRecordsByWinner(String winner);
 }
