@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:background="@color/grey">
+        android:background="@color/black_transparent">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -29,7 +29,7 @@
                 android:singleLine="false"
                 android:maxLines="2"
                 android:text="@{troop.kind}"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 tools:text="@string/app_name" />
         </LinearLayout>
 
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="Strength : "
                     />
 
@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="@{String.valueOf(troop.strength)}"/>
 
             </LinearLayout>
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="Agility : "
                     />
 
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="@{String.valueOf(troop.agility)}"/>
 
             </LinearLayout>
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="Intelligence : "
                     />
 
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/app_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="@{String.valueOf(troop.intelligence)}"/>
 
             </LinearLayout>

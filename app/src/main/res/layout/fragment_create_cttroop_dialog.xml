@@ -11,13 +11,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/dark_transparent">
+        android:background="@color/black_transparent">
 
         <RelativeLayout
             android:id="@+id/lytButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_transparent">
 
             <Button
                 android:id="@+id/btnCreate"
